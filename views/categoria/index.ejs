@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+
+<body>
+
+    <div class="container">
+
+        <%- include('../partials/menu.ejs') %>
+
+        <div class="card">
+
+            <div class="card-header">
+                <h3>CADASTRO DE CLIENTES</h3>
+            </div>
+
+            <div class="card-body">
+
+                <form action="http://localhost:3000/cadastrarCliente" method="post">
+
+                    <label for="nome_cliente"></label>
+                    <input class="form-control" type="text" 
+                    name="nome_cliente" id="nome_cliente"
+                    placeholder="NOME DO CLIENTE">
+
+                    <label for="email_cliente"></label>
+                    <input class="form-control" type="text" 
+                    name="email_cliente" id="email_cliente"
+                    placeholder="EMAIL DO CLIENTE">
+
+                    <button class="btn btn-success mt-3">CONFIRMAR</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<%- include('../partials/footer.ejs') %>
+
+</html>
