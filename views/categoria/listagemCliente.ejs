@@ -16,12 +16,16 @@
 
                     <div class="card mt-2 p1">
                         <div class="card-body">
-                            <%= clientes.nome_cliente %>
-                            <%= clientes.cod_cliente %>
-                            <%= clientes.email_cliente %>
-                            <%= clientes.celular_cliente %>
+                           Nome: <%=  clientes.nome_cliente %> <br>
+                            ID: <%=  clientes.cod_cliente %> <br>
+                           Email: <%=  clientes.email_cliente %>
                         </div>
-                        <% }) %>
+                        <div class="btn-group mr-2">
+						<a href="/editarCliente/<%= clientes.cod_cliente %>" class="btn btn-success btn-sm mr-2 ml-2">EDITAR</a>
+						<a href="/excluirCliente/<%= clientes.cod_cliente%>" class="btn btn-danger btn-sm mr-2">EXCLUIR</a>
+					</div>
+
+                <% }) %>
 
                     </div>
 

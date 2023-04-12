@@ -48,32 +48,45 @@ app.get('/listagemCliente', (req, res)=>{
     });
 });
 
-//EDITAR
+//AQUI É PARA EDITAR O CLIENTE
 
-app.get('/editarCategoria/:cod_categoria', (req, res)=>{
+app.get('/editarCliente/:cod_cliente', (req, res)=>{
 
-    let {cod_categoria} = req.params
+    let {cod_cliente} = req.params
     
-    urlListarCategoriaPk = `http://localhost:3000/listarCategoriaPk/${cod_categoria}`
+    urlListarClientePk = `http://localhost:3000/listarClientePK/${cod_cliente}`
 
-    axios.get(urlListarCategoriaPk)
+    axios.get(urlListarClientePk)
     .then((response)=>{
         // console.log(response.data);
-        let categoria = response.data;
-        res.render('categoria/editarCategoria.ejs', {categoria});
+        let clientes = response.data;
+        res.render('categoria/editarCliente.ejs', {clientes});
     })
     
 })
 
-app.post('/editarCategoria', (req, res)=>{
+app.post('/editarCliente', (req, res)=>{
 
-    let urlEditar = 'http://localhost:3000/alterarCategoria'
+    let urlEditar = 'http://localhost:3000/alterarCliente'
 
     axios.put(urlEditar, req.body)
     .then((response)=>{
-        res.send('dado alterado')
+        res.redirect('/listagemCliente')
     })
 })
+
+app.get('/excluirCliente/:cod_cliente', (req, res)=>{
+    console.log(req.params);
+ 
+     let {cod_cliente} = req.params;
+ 
+     const urlDeletarCliente= `http://localhost:3000/deletarCliente/${cod_cliente}`;
+ 
+     axios.delete(urlDeletarCliente)
+     .then((response)=>{
+         res.redirect('/listagemCliente');
+        });
+    });
 
 /* FIM DAS ROTAS DE CATEGORIA */
 
